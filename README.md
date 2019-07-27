@@ -12,6 +12,7 @@
 - **rustup** : CLI tool for managing RUST versions (like nvm, rvm)
 - **Rustfmt** : code formatter (like prettier) for RUST
 - **Rust Language Server** : for IDE integration for code completion, inline error messages
+- **Crates** : modules (like node_modules) for RUST
 
 
 
@@ -83,9 +84,80 @@
 
 
 
+# Hello Cargo
 
+- Cargo is build tool and dependecy manger for RUST lang.
 
+- Create a new project with cargo
 
+  ```java
+  cargo new hello_cargo
+  ```
+
+- This creates the directory `hello_cargo` and two files under it
+
+  **Cargo.toml**
+
+  ```toml
+  [package]
+  name = "hello_cargo"
+  version = "0.1.0"
+  authors = ["nishant <nishant.singh87@gmail.com>"]
+  edition = "2018"
+  
+  # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+  
+  [dependencies]
+  ```
+
+	**src/main.rs**
+	
+	```rust
+	fn main() {
+	    println!("Hello, world!");
+	}
+	```
+
+- Build project
+
+  ```
+  cargo build
+  ```
+
+- Run built project
+
+  ```bash
+  cargo run
+  ```
+
+- Notice it creates a new file `Cargo.lock` which works just like package.lock.json 
+
+- It also creates a **target** directory
+
+- Binary code is generated in **target/debug**
+
+- Check compile errors without building code using `cargo check`
+
+  ```
+  cargo check
+  ```
+
+- **Build for release**
+
+  ```
+  cargo build --release
+  ```
+
+- this creates a **target/release** directory to output a more optimized production code
+
+**Notes**
+
+- Cargo uses **Cargo.toml**, just like npm uses package.json
+- [TOML](https://github.com/toml-lang/toml) is superb markup language (minimal that JSON, without sucking up like YAML)
+- Cargo asks to keep all code in `src`
+- Cargo follows philosophy of *place for everything, everything in its place*
+- **cargo check** runs much faster than cargo build, hence suitable to quickly checking compile errors
+- **carto build** creates binary quickly for dev mode, **cargo build —release** performs extra optmizations for produced binary
 
 
 
