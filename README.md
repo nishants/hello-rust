@@ -1,8 +1,12 @@
+[Find a cheatsheet here](cheatsheat.md) 
+
 ### Learning resources
 
 - **The Book** : https://doc.rust-lang.org/book/title-page.html
 - **Rust by example** https://doc.rust-lang.org/rust-by-example/index.html
 - **Rustlings** (exercises) : https://github.com/rust-lang/rustlings
+- https://github.com/ctjhoa/rust-learning
+- http://cosmic.mearie.org/2014/01/periodic-table-of-rust-types/
 
 
 
@@ -10,9 +14,10 @@
 
 - **Cargo** : build system and package manager (like npm, gradle, rake) for RUST
 - **rustup** : CLI tool for managing RUST versions (like nvm, rvm)
-- **Rustfmt** : code formatter (like prettier) for RUST
+- **Rustfmt**  (Rust Format): code formatter (like prettier) for RUST
 - **Rust Language Server** : for IDE integration for code completion, inline error messages
 - **Crates** : modules (like node_modules) for RUST
+- **[perludes](https://doc.rust-lang.org/std/prelude/index.html)**: default libs imported for a RUST program file
 
 
 
@@ -52,7 +57,7 @@
 
   
 
-### Hello World !
+# 01 - Hello World !
 
 1. Create a `hello_world.rs`
 
@@ -65,7 +70,7 @@
 2. Complile program
 
    ```bash
-   rust c hello_world.rs
+   rustc hello_world.rs
    ```
 
 3. Run compiled binary
@@ -84,7 +89,7 @@
 
 
 
-# Hello Cargo
+# 02 - Hello Cargo
 
 - Cargo is build tool and dependecy manger for RUST lang.
 
@@ -161,12 +166,11 @@
 
 
 
-| Ferris                                                       | Meaning                                          |
-| ------------------------------------------------------------ | ------------------------------------------------ |
-| <img src="https://doc.rust-lang.org/book/img/ferris/does_not_compile.svg" style="width: 100px; display: block; overflow: hidden"> | This code does not compile!                      |
-| <img src="https://doc.rust-lang.org/book/img/ferris/panics.svg" style="width: 100px; display: block; overflow: hidden"> | This code panics!                                |
-| <img src="https://doc.rust-lang.org/book/img/ferris/unsafe.svg" style="width: 100px; display: block; overflow: hidden"> | This code block contains unsafe code.            |
-| <img src="https://doc.rust-lang.org/book/img/ferris/not_desired_behavior.svg" style="width: 100px; display: block; overflow: hidden"> | This code does not produce the desired behavior. |
+
+
+# 03 - Guessing game
+
+
 
 
 
