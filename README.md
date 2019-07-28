@@ -1,10 +1,16 @@
-[Find a cheatsheet here](cheatsheat.md) 
+[Find a cheatsheet here](./cheatsheet.md) 
 
 ### Learning resources
 
 - **The Book** : https://doc.rust-lang.org/book/title-page.html
 - **Rust by example** https://doc.rust-lang.org/rust-by-example/index.html
 - **Rustlings** (exercises) : https://github.com/rust-lang/rustlings
+
+
+
+### Other interesting resources
+
+- **Fullstack with RUST :** https://thefullsnack.com/en/rust-for-the-web.html
 - https://github.com/ctjhoa/rust-learning
 - http://cosmic.mearie.org/2014/01/periodic-table-of-rust-types/
 
@@ -172,7 +178,77 @@
 
 
 
+- Add the rand crate in Cargo.toml to generate random numbers
 
+  ```toml
+  [dependencies]
+  rand = "0.7.0"
+  ```
+
+  and run 
+
+  ```bash
+  cargo build
+  ```
+
+  
+
+- Create a guessing game
+
+  ```rust
+  use std::io;
+  use rand::Rng;
+  use std::cmp::Ordering;
+  
+  fn main(){
+  
+  	loop{
+  		println!("Enter your guess");
+  
+  		let mut user_input = String::new();
+  		io::stdin().read_line(&mut user_input).expect("Failed to read value from console");
+  		
+  		// we could do this too, but will crash program when input is invalid number
+  		// let user_input : u32 = user_input.trim().parse().expect("Please enter a valid number");
+  		
+  		let user_input : u32 = match user_input.trim().parse(){
+  			Ok(value) => value,
+  			Err(_) => {
+  				println!("\"{}\" is not a valid number", user_input.trim());
+  				continue;
+  			}
+  		};
+  
+  		let secret = rand::thread_rng().gen_range(1, 11);
+  
+  		match user_input.cmp(&secret){
+  			Ordering::Less => println!("Too small than ({})", secret),
+  			Ordering::Greater => println!("Too large than {}", secret),
+  			Ordering::Equal => {
+  				println!("Bingo !");
+  				break;
+  			},
+  		};
+  	}
+  }
+  ```
+
+**Notes**
+
+- random number generation is not a core part for RUST API (too bad)
+- we used **rand crate** for random number generation
+- we used the **std::io**  for reading standard input stream (console)
+- `io::stdin.read_line()` : returns **enum** of type **io::Result**, which can be **Ok** or **Err**
+- `io::Result#expect` returns value (`Ok` type) or exits programs (`Err` type), based on what was returned from `read_line`
+- `use rand::Rng;` adds the `Rng` trait in scope of program
+- `rand::thread_rng()` : creates **random number generator specific to current thread** 
+- `std::cmp::Ordering` is another enum, whose values can be `Greater`, `Less` or `Equal`
+- `use std::cmp::Ordering;` brings the `Ordering` enum into the scope
+- `cmp` can be called on anything that can be compared, part of `std` scope, it returns an enum of type `std::cmp::Ordering`
+- `match ` expression works just like `switch`, the `cases` here are called `arms`. 
+- `match user_input.cmp(&secret)` works like `switch(user_input.cmp(&secret))` and the arms work like the `case Ordering::Less :`though
+- `u32` is an unsigned integer. RUST auto infers this type based on annotation `let user_input: u32` while processing `user_input.trim().parse()`
+- 
 
 
 

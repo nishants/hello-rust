@@ -1,5 +1,10 @@
 # Cheatsheet
 
+**Characteristics**
+
+- strong, static type system (with auto inference and shadowing)
+- 
+
 **Ecosystem**: 
 
 |                          |                                                           |
@@ -17,14 +22,15 @@
 
 **Cargo**: 
 
-|                                |                                                            |
-| ------------------------------ | ---------------------------------------------------------- |
-| **cargo new <project-name>**   | creates new cargo project                                  |
-| **cargo build**                | create debug binary (**for dev**) in **target/debug**      |
-| **cargo build —release**       | creates **optimized** release binary in **target/release** |
-| **cargo check**                | quickly check for compile error without creating binary    |
-| **cargo run**                  | compile and run                                            |
-| **RUST_BACKTRACE=1 cargo run** | run with stacktrace for errors                             |
+|                              |                                                              |
+| ---------------------------- | ------------------------------------------------------------ |
+| `cargo new <project-name>`   | creates new cargo project                                    |
+| `cargo build`                | create debug binary (**for dev**) in **target/debug**        |
+| `cargo build —release`       | creates **optimized** release binary in **target/release**   |
+| `cargo check`                | quickly check for compile error without creating binary      |
+| `cargo run`                  | compile and run                                              |
+| `RUST_BACKTRACE=1 cargo run` | run with stacktrace for errors                               |
+| `cargo doc --open`           | <span style="color: #D2991D; font-weight: bold">opens docs for all crates in project/span</span> |
 
 
 
@@ -37,6 +43,18 @@
 | **fn**    |      |      |      |      | **::** |
 | **use**   |      |      |      |      | **.**  |
 | **match** |      |      |      |      |        |
+
+
+
+**Primitive Types**
+
+|      |      |
+| ---- | ---- |
+|      |      |
+|      |      |
+|      |      |
+
+
 
 **Variables**:
 
@@ -73,20 +91,32 @@
 
 **Misc language features** : 
 
-|                         |                                               |
-| ----------------------- | --------------------------------------------- |
-| `use std::io`           | import module                                 |
-| `String::new()`         | invoke type function (static function)        |
-| `println!("hello";`     | Macro for print line                          |
-| `println("hello");`     | Function for print line                       |
-| `read_line(&mut myvar)` | pass mutable variable reference to a function |
-|                         |                                               |
-|                         |                                               |
+|                         |                                                              |
+| ----------------------- | ------------------------------------------------------------ |
+| `use std::io`           | import module                                                |
+| `String::new()`         | invoke *associated* function to a type (i.e. static function) |
+| `println!("hello";`     | Macro for print line                                         |
+| `println("hello");`     | Function for print line                                      |
+| `read_line(&mut myvar)` | pass mutable variable reference to a function                |
+|                         |                                                              |
+|                         |                                                              |
 
 
 
 # Recipes 
 
+- **Shadowing** : allows delcaring same variable with different type within the same scope
+
+  ```rust
+  // Declared as string to take user input
+  let user_input = "21";
+  
+  // Shadowed by number from parsed string
+  let user_input : u32 = user_input.trim().parse().expect("Please enter a valid number");
+  ```
+
+  
+  
 - **Loop**
 
   ```rust
